@@ -1,0 +1,29 @@
+<div class="gen-button-contaier flex justify-around my-5">
+  <button class="button-gen" (click)="loadGen(151,0)">gen I</button>
+  <button class="button-gen" (click)="loadGen(100,151)">gen II</button>
+  <button class="button-gen" (click)="loadGen(135,251)">gen III</button>
+  <button class="button-gen" (click)="loadGen(107,386)">gen IV</button>
+  <button class="button-gen" (click)="loadGen(156,493)">gen V</button>
+  <button class="button-gen" (click)="loadGen(72,649)">gen VI</button>
+  <button class="button-gen" (click)="loadGen(88,721)">gen VII</button>
+  <button class="button-gen" (click)="loadGen(96,809)">gen VIII</button>
+  <button class="button-gen" (click)="loadGen(120,905)">gen IX</button>
+</div>
+@if (this.loading()) {
+   <p>Loading...</p>
+} @else {
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+  @for (pokemon of pokemonDetails(); track pokemon.name) {
+    <div [ngClass]="getPrimaryTypeClass(pokemon)" class="card">
+      <div class="flex flex-col">
+        <h1 class="flex w-full justify-center">{{ pokemon.id }}</h1>
+        <h1 class="card-title">{{ pokemon.name }}</h1>
+        <div class="card-type">
+          <h2>{{ getTypeNames(pokemon) }}</h2>
+        </div>
+      </div>
+      <img src="{{ pokemon.sprites.front_default }}" alt="pokemon images">
+    </div>
+  }
+</div>
+}
